@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sowmya Kukudapu — AI/ML Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel2: #1c232d;
+    --line: #2a3441;
+    --ink: #e8edf3;
+    --ink-soft: #9aa6b5;
+    --accent: #58a6ff;
+    --accent2: #7ee0c0;
+    --chip: #21303f;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Nav */
+  nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; background: rgba(13,17,23,.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  nav .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  nav .links { display: flex; gap: 26px; }
+  nav .links a { color: var(--ink-soft); font-size: 14px; font-weight: 500; }
+  nav .links a:hover { color: var(--ink); text-decoration: none; }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+
+  /* Hero / Bio */
+  header.hero { padding: 80px 0 60px; border-bottom: 1px solid var(--line); }
+  .hero .kicker { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 18px; }
+  .hero h1 { font-family: "Space Grotesk", sans-serif; font-size: 46px; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 10px; font-weight: 700; }
+  .hero .role { font-size: 19px; color: var(--ink-soft); margin: 0 0 30px; font-weight: 500; }
+  .hero p { font-size: 17px; color: var(--ink); max-width: 720px; margin: 0 0 18px; }
+  .hero .contact { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 26px; }
+  .hero .contact span, .hero .contact a { font-size: 13.5px; color: var(--ink-soft); background: var(--chip); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; }
+
+  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
+  .sec-label { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 16px; }
+  h2.sec-title { font-family: "Space Grotesk", sans-serif; font-size: 30px; letter-spacing: -0.01em; margin: 0 0 22px; font-weight: 700; }
+
+  /* Value proposition */
+  .vp { background: linear-gradient(160deg, var(--panel), var(--panel2)); border: 1px solid var(--line); border-radius: 16px; padding: 34px 38px; font-size: 20px; line-height: 1.6; color: var(--ink); }
+  .vp strong { color: var(--accent2); font-weight: 600; }
+
+  .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+  .skills span { font-size: 13px; color: var(--ink-soft); background: var(--chip); border: 1px solid var(--line); padding: 6px 13px; border-radius: 8px; }
+
+  /* Artifact card */
+  .artifact { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+  .artifact .visual { background: linear-gradient(135deg, #12233b, #0d1a2b); border-bottom: 1px solid var(--line); padding: 44px 40px; position: relative; }
+  .artifact .visual .badge { display: inline-block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 14px; }
+  .artifact .visual h3 { font-family: "Space Grotesk", sans-serif; font-size: 27px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
+  .artifact .visual p { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 620px; }
+  .artifact .visual .chatbubble { margin-top: 22px; background: #0d1117; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; max-width: 560px; }
+  .artifact .visual .chatbubble .u { color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .artifact .visual .chatbubble .b { color: var(--ink); font-size: 14.5px; }
+  .artifact .visual .cta { display: inline-block; margin-top: 22px; background: var(--accent); color: #06243f; font-weight: 600; font-size: 14.5px; padding: 11px 20px; border-radius: 9px; }
+  .artifact .visual .cta:hover { text-decoration: none; filter: brightness(1.08); }
+
+  .artifact .body { padding: 36px 40px 42px; }
+  .field { margin-bottom: 26px; }
+  .field:last-child { margin-bottom: 0; }
+  .field h4 { font-family: "Space Grotesk", sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; font-weight: 600; }
+  .field p { margin: 0; font-size: 16.5px; color: var(--ink); }
+  .field ul { margin: 6px 0 0; padding-left: 20px; }
+  .field li { font-size: 16px; margin-bottom: 6px; color: var(--ink); }
+  .toolchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .toolchips span { font-size: 13px; color: var(--ink); background: var(--chip); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; }
+
+  footer { padding: 40px 0 60px; color: var(--ink-soft); font-size: 14px; text-align: center; }
+
+  @media (max-width: 640px) {
+    nav { padding: 14px 20px; } nav .links { gap: 16px; }
+    .wrap { padding: 0 22px; }
+    .hero h1 { font-size: 34px; }
+    .artifact .visual, .artifact .body { padding: 28px 24px; }
+    .vp { padding: 26px 24px; font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+  <nav>
+    <span class="brand">Sowmya Kukudapu</span>
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#value">Value</a>
+      <a href="#artifacts">Artifacts</a>
+      <a href="#speakers-bureau">Team Project</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="about">
+    <div class="wrap">
+      <p class="kicker">AI / Machine Learning Portfolio</p>
+      <h1>Sowmya Kukudapu</h1>
+      <p class="role">Data &amp; Statistical Programming Professional · Machine Learning Graduate Student</p>
+      <p>I am a certified statistical programmer with nearly ten years of experience turning complex clinical-trial data into accurate, regulation-ready insight across oncology, neurology, vaccines, and cardiovascular studies. I led end-to-end programming of CDISC SDTM and ADaM datasets, tables, listings, and figures through FDA submission, mentored junior programmers, and coordinated work across cross-functional and vendor teams.</p>
+      <p>I am now pursuing a master's degree in Artificial Intelligence and Machine Learning to build on that data foundation. My goal is to grow into a role where I help organizations apply AI responsibly — pairing the technical rigor and quality discipline of a regulated industry with the new capabilities of machine learning. This portfolio documents that journey, starting with my first workshop in the program.</p>
+      <div class="contact">
+        <span>Oncology &amp; Clinical Data</span>
+        <span>CDISC · SDTM · ADaM</span>
+        <span>SAS · R · SQL</span>
+        <span>Learning: AI / ML</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="value">
+    <div class="wrap">
+      <p class="sec-label">Personal Value Proposition</p>
+      <h2 class="sec-title">The value I bring</h2>
+      <div class="vp">
+        As a data professional with nearly a decade in <strong>statistical programming and clinical data standards</strong>, now specializing in <strong>artificial intelligence and machine learning</strong>, I help organizations turn complex, high-stakes data into <strong>trustworthy, decision-ready insight</strong>. I combine the quality and compliance discipline of regulated research with a focus on <strong>responsible, ethical AI</strong> — bridging the gap between raw data and real-world impact.
+      </div>
+      <div class="skills">
+        <span>Statistical Programming</span>
+        <span>CDISC SDTM / ADaM</span>
+        <span>TLFs &amp; Submission Outputs</span>
+        <span>Oncology Endpoints (OS, PFS, KM)</span>
+        <span>SAS (Base/Macro/STAT/SQL)</span>
+        <span>R</span>
+        <span>SQL (Oracle, SQL Server, Teradata)</span>
+        <span>Data Validation &amp; Cleaning</span>
+        <span>Machine Learning (in progress)</span>
+        <span>Responsible AI</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="artifacts">
+    <div class="wrap">
+      <p class="sec-label">Artifact 01 · AIML-500 Workshop 1</p>
+      <h2 class="sec-title">Machine Learning Study Assistant</h2>
+
+      <div class="artifact">
+        <div class="visual">
+          <span class="badge">AI Lab · Design-Thinking Build</span>
+          <h3>An AI Assistant That Teaches, Not Answers-For</h3>
+          <p>A conversational study assistant I designed and built to help students learn core machine-learning concepts through plain-language explanations and quizzing — with guardrails that keep it a learning tool, not a shortcut.</p>
+          <div class="chatbubble">
+            <div class="u">Student: "Explain overfitting"</div>
+            <div class="b">Assistant: "Think of a student who memorizes last year's exam answers instead of understanding the material — they ace the old test but fail new questions. An overfit model does the same…"</div>
+          </div>
+          <a class="cta" href="https://chatgpt.com/share/6a48793a-7844-83ea-a028-31944723d506" target="_blank" rel="noopener">View the live assistant →</a>
+        </div>
+
+        <div class="body">
+          <div class="field">
+            <h4>Introduction</h4>
+            <p>This artifact is an AI-powered study assistant I created during the AIML-500 AI Lab using a structured design-thinking process. It represents my first hands-on experience turning a real user need into a working AI product.</p>
+          </div>
+          <div class="field">
+            <h4>Description</h4>
+            <p>The Machine Learning Study Assistant is a conversational assistant that explains introductory machine-learning concepts — supervised, unsupervised, and reinforcement learning, overfitting, neural networks, deep learning, and model evaluation such as accuracy, precision, and recall. It can also quiz a learner one question at a time and give feedback. By design, it declines to complete graded assignments and instead offers to help the student learn, and it asks clarifying questions rather than guessing when given too little information.</p>
+          </div>
+          <div class="field">
+            <h4>Objective</h4>
+            <p>To give students new to machine learning a patient, on-demand study partner that makes dense concepts approachable and builds confidence — while modeling responsible, academic-integrity-friendly use of AI in education.</p>
+          </div>
+          <div class="field">
+            <h4>Process</h4>
+            <ul>
+              <li><strong>Empathy:</strong> identified the real pain point — new learners find ML terminology dense and easily confuse concepts like precision vs. recall.</li>
+              <li><strong>Define:</strong> framed a focused problem statement and deliberately limited scope to explaining and quizzing, not doing graded work.</li>
+              <li><strong>Ideate:</strong> compared a flashcard bot, a concept explainer, and a quiz coach, then combined the explainer and quiz coach for the most learning value.</li>
+              <li><strong>Prototype:</strong> wrote a detailed instruction set answering ten planning questions (objective, knowledge, guardrails, tone, flow, and success criteria).</li>
+              <li><strong>Test &amp; iterate:</strong> ran four scenarios; when an early version began drafting an assignment, I revised the instructions to refuse and redirect — an example of improving the product through testing.</li>
+            </ul>
+          </div>
+          <div class="field">
+            <h4>Tools and Technologies Used</h4>
+            <div class="toolchips">
+              <span>ChatGPT (GPT-4o)</span>
+              <span>Design Thinking</span>
+              <span>Prompt / Instruction Design</span>
+              <span>STORM AI (research practice)</span>
+              <span>Custom GPTs (practice)</span>
+            </div>
+          </div>
+          <div class="field">
+            <h4>Value Proposition</h4>
+            <p>This assistant gives learners a judgment-free way to understand machine-learning concepts at their own pace, turning an intimidating subject into an approachable conversation — while demonstrating how AI can support education without undermining academic integrity.</p>
+          </div>
+          <div class="field">
+            <h4>Unique Value</h4>
+            <p>Unlike a general chatbot, this assistant is built around learning guardrails: it refuses to do graded work, asks for clarification instead of guessing, and always points the learner back to their course material. That intentional restraint reflects the responsible-AI mindset I bring from a regulated, quality-driven background.</p>
+          </div>
+          <div class="field">
+            <h4>Relevance</h4>
+            <p>For my audience — hiring teams and collaborators in data and AI roles — this artifact shows I can take a problem from empathy to a working, responsibly-designed AI solution, and explain my reasoning clearly to both technical and non-technical people.</p>
+          </div>
+          <div class="field">
+            <h4>References</h4>
+            <p>Built during AIML-500 (Machine Learning Fundamentals), Workshop 1 AI Lab, Indiana Wesleyan University. Design-thinking framework per the AI Lab guided activity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="speakers-bureau">
+    <div class="wrap">
+      <p class="sec-label">Artifact 02 · Team Project</p>
+      <h2 class="sec-title">The Rebound Room — AI Speakers Bureau</h2>
+
+      <div class="artifact">
+        <div class="visual">
+          <span class="badge">Team Project · AI Booking Bot</span>
+          <h3>An AI Booking Assistant for a Speakers Bureau</h3>
+          <p>This project documents my professional AI/ML portfolio, built to showcase my transition from nearly a decade in clinical statistical programming into artificial intelligence and machine learning. It includes my bio and personal value proposition, along with my first portfolio artifact — a Machine Learning Study Assistant I designed and built during my AIML-500 AI Lab using a structured design-thinking process (empathy, define, ideate, prototype, test &amp; iterate). The artifact demonstrates how I turn a real learning problem into a working, responsibly-designed AI product, with guardrails that keep it a study aid rather than a shortcut.</p>
+          <a class="cta" href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2210TA5_K5TO8DiC6EAZaPXH-PiJHpY09yl%22%5D,%22action%22:%22open%22,%22userId%22:%22110275319469463327484%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" target="_blank" rel="noopener">Try the Machine Learning Study Assistant →</a>
+        </div>
+
+        <div class="body">
+          <div class="field">
+            <h4>Process Infographic</h4>
+            <img src="rebound-process.png" alt="The Rebound Room project workflow infographic" style="width:100%; border-radius:12px; border:1px solid var(--line); margin-top:6px;" />
+          </div>
+          <div class="field">
+            <h4>Marketing Infographic</h4>
+            <img src="rebound-marketing.png" alt="The Rebound Room marketing infographic" style="width:100%; border-radius:12px; border:1px solid var(--line); margin-top:6px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">© 2026 Sowmya Kukudapu · AI/ML Professional Portfolio · Built for AIML-500</div>
+  </footer>
+</body>
+</html>
 

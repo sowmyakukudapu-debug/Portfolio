@@ -342,6 +342,41 @@
 </div>
 </div>
 </section>
+
+<section id="artifact4">
+<div class="wrap">
+<p class="sec-label">Artifact 04 · AIML-500 Workshop 4</p>
+<h2 class="sec-title">Data Challenges in Production ML: A Scenario-Based Problem-Solving Session</h2>
+<div class="artifact">
+<div class="visual">
+<span class="badge">Applied Problem-Solving · AI Coaching Session</span>
+<h3>Missing Data, Imbalance, and Drift — Worked Live</h3>
+<p>My first three artifacts show building, comparative reasoning, and ethical evaluation. This fourth artifact shows a different, more operational skill: diagnosing and solving the data problems that break ML models in production, worked through in real time against three escalating scenarios.</p>
+<div class="chatbubble">
+<div class="u">Scenario: CLV model overestimating value 6 months post-launch</div>
+<div class="b">Diagnosis: not one problem but two — covariate drift (channel/product mix shifted) layered with concept drift (dynamic pricing broke the historical spend-to-value relationship). Retraining alone would have missed the second half.</div>
+</div>
+</div>
+<div class="body">
+<div class="field"><h4>Introduction</h4><p>During AIML-500 Workshop 4, I worked through three progressively harder data-challenge scenarios with an AI coach: handling missing data, correcting for severe class imbalance, and diagnosing production data drift. This artifact captures that reasoning as a portfolio piece demonstrating operational ML judgment, distinct from the model-building and ethics work in my earlier artifacts.</p></div>
+<div class="field"><h4>Description</h4><p>Three real-world scenarios were worked in sequence: (1) a telecom churn dataset with three features missing for different reasons, (2) a fraud-detection model with 0.8% positive-class prevalence and asymmetric business costs, and (3) a customer lifetime value model silently degrading after a business change six months post-deployment. For each, I diagnosed the root cause and proposed a concrete, business-aware fix.</p></div>
+<div class="field"><h4>Objective</h4><p>To demonstrate that I can move past textbook definitions of data problems into applied judgment — distinguishing missingness mechanisms, connecting model metrics to real business costs, and separating covariate drift from concept drift — the kind of reasoning that keeps ML systems reliable after deployment, not just accurate in a notebook.</p></div>
+<div class="field"><h4>Process</h4><ul>
+<li><strong>Missing data:</strong> Diagnosed each feature's missingness mechanism separately — median imputation with a missingness flag for random gaps, model-based imputation for a correlated feature, and a derived "no history" category for data missing not-at-random — rather than applying one blanket rule.</li>
+<li><strong>Class imbalance:</strong> Rejected accuracy as a metric given 0.8% fraud prevalence, translated the confusion matrix directly into the business's $500-miss vs. $25-false-positive cost ratio to set the decision threshold, and paired cost-weighted gradient boosting with cautious, feature-first resampling.</li>
+<li><strong>Data drift:</strong> Separated covariate drift (population shift) from concept drift (a broken input-output relationship caused by dynamic pricing), and sequenced the fix — add features that make the new dynamics learnable before retraining, not after.</li>
+<li><strong>Synthesis:</strong> Argued for a hybrid monitoring/retraining strategy — scheduled baseline retraining plus event-triggered overrides tied to both statistical drift scores and known business changes.</li>
+</ul></div>
+<div class="field"><h4>Tools and Technologies Used</h4><div class="toolchips"><span>Missing Data Imputation</span><span>Class Imbalance / Cost-Sensitive Learning</span><span>Population Stability Index</span><span>Covariate vs. Concept Drift</span><span>Model Monitoring &amp; Retraining Strategy</span></div></div>
+<div class="field"><h4>Value Proposition</h4><p>This artifact shows I can reason about ML systems the way they actually fail in production — quietly, at the data layer — rather than only at the model-architecture layer. That diagnostic instinct is what keeps deployed models trustworthy over time, not just accurate on day one.</p></div>
+<div class="field"><h4>Unique Value</h4><p>Many candidates can define missing data, imbalance, and drift; fewer can walk through live, escalating scenarios and tie each technical decision back to a concrete business cost or monitoring trigger. That operational fluency is the differentiator this artifact is built to surface.</p></div>
+<div class="field"><h4>Relevance</h4><p>Clinical and pharma data pipelines face these exact problems — missing lab values, rare-event safety signals, and shifting patient populations across a trial's lifespan — making this directly relevant to applying ML responsibly in a regulated, high-stakes data environment.</p></div>
+<div class="field"><h4>References</h4><p>AIML-500 (Machine Learning Fundamentals), Workshop 4, Assignment 4.3 (Data Challenge Scenarios AI Coaching Session), Indiana Wesleyan University.</p></div>
+<div class="field"><h4>Reflection</h4><p><strong>Customization for the Audience:</strong> The original coaching session was a live, conversational back-and-forth aimed at demonstrating engagement to an instructor. For the portfolio, aimed at hiring managers, I restructured it into a scannable Process/Value/Relevance format and pulled out the reusable frameworks (missingness-mechanism diagnosis, cost-ratio thresholding, drift-type separation) so a reader gets the transferable judgment, not a transcript of the conversation.</p><p><strong>Lessons Learned:</strong> Presenting this work as a portfolio artifact clarified that the most hireable part of the session wasn't any single correct answer, but the pattern across all three scenarios: resisting the default/textbook fix and instead asking what mechanism is actually driving this problem before choosing a remedy. Naming that pattern explicitly, rather than leaving it implicit across three separate stories, made the artifact far stronger.</p><p><strong>Feedback and Revisions:</strong> Initial feedback during the session itself pushed me to operationalize vague instincts into concrete mechanics — for example, turning "pick a good threshold" into an explicit expected-cost formula, and turning "retrain the model" into a specific sequenced feature-then-retrain plan. I carried that same discipline into the reflection here by naming a synthesis principle instead of leaving three scenarios as three disconnected anecdotes.</p></div>
+</div>
+</div>
+</div>
+</section>
   
   <footer>
     <div class="wrap">© 2026 Sowmya Kukudapu · AI/ML Professional Portfolio · Built for AIML-500</div>

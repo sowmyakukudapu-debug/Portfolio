@@ -1,278 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sowmya Kukudapu — AI/ML Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d1117;
-    --panel: #161b22;
-    --panel2: #1c232d;
-    --line: #2a3441;
-    --ink: #e8edf3;
-    --ink-soft: #9aa6b5;
-    --accent: #58a6ff;
-    --accent2: #7ee0c0;
-    --chip: #21303f;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* Nav */
-  nav { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; background: rgba(13,17,23,.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
-  nav .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
-  nav .links { display: flex; gap: 26px; }
-  nav .links a { color: var(--ink-soft); font-size: 14px; font-weight: 500; }
-  nav .links a:hover { color: var(--ink); text-decoration: none; }
-
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
-
-  /* Hero / Bio */
-  header.hero { padding: 80px 0 60px; border-bottom: 1px solid var(--line); }
-  .hero .kicker { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 18px; }
-  .hero h1 { font-family: "Space Grotesk", sans-serif; font-size: 46px; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 10px; font-weight: 700; }
-  .hero .role { font-size: 19px; color: var(--ink-soft); margin: 0 0 30px; font-weight: 500; }
-  .hero p { font-size: 17px; color: var(--ink); max-width: 720px; margin: 0 0 18px; }
-  .hero .contact { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 26px; }
-  .hero .contact span, .hero .contact a { font-size: 13.5px; color: var(--ink-soft); background: var(--chip); border: 1px solid var(--line); padding: 7px 14px; border-radius: 999px; }
-
-  section { padding: 60px 0; border-bottom: 1px solid var(--line); }
-  .sec-label { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 16px; }
-  h2.sec-title { font-family: "Space Grotesk", sans-serif; font-size: 30px; letter-spacing: -0.01em; margin: 0 0 22px; font-weight: 700; }
-
-  /* Value proposition */
-  .vp { background: linear-gradient(160deg, var(--panel), var(--panel2)); border: 1px solid var(--line); border-radius: 16px; padding: 34px 38px; font-size: 20px; line-height: 1.6; color: var(--ink); }
-  .vp strong { color: var(--accent2); font-weight: 600; }
-
-  .skills { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
-  .skills span { font-size: 13px; color: var(--ink-soft); background: var(--chip); border: 1px solid var(--line); padding: 6px 13px; border-radius: 8px; }
-
-  /* Artifact card */
-  .artifact { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
-  .artifact .visual { background: linear-gradient(135deg, #12233b, #0d1a2b); border-bottom: 1px solid var(--line); padding: 44px 40px; position: relative; }
-  .artifact .visual .badge { display: inline-block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent2); font-weight: 600; margin-bottom: 14px; }
-  .artifact .visual h3 { font-family: "Space Grotesk", sans-serif; font-size: 27px; margin: 0 0 10px; font-weight: 700; letter-spacing: -0.01em; }
-  .artifact .visual p { margin: 0; color: var(--ink-soft); font-size: 15.5px; max-width: 620px; }
-  .artifact .visual .chatbubble { margin-top: 22px; background: #0d1117; border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; max-width: 560px; }
-  .artifact .visual .chatbubble .u { color: var(--accent); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-  .artifact .visual .chatbubble .b { color: var(--ink); font-size: 14.5px; }
-  .artifact .visual .cta { display: inline-block; margin-top: 22px; background: var(--accent); color: #06243f; font-weight: 600; font-size: 14.5px; padding: 11px 20px; border-radius: 9px; }
-  .artifact .visual .cta:hover { text-decoration: none; filter: brightness(1.08); }
-
-  .artifact .body { padding: 36px 40px 42px; }
-  .field { margin-bottom: 26px; }
-  .field:last-child { margin-bottom: 0; }
-  .field h4 { font-family: "Space Grotesk", sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; font-weight: 600; }
-  .field p { margin: 0; font-size: 16.5px; color: var(--ink); }
-  .field ul { margin: 6px 0 0; padding-left: 20px; }
-  .field li { font-size: 16px; margin-bottom: 6px; color: var(--ink); }
-  .toolchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-  .toolchips span { font-size: 13px; color: var(--ink); background: var(--chip); border: 1px solid var(--line); padding: 6px 12px; border-radius: 8px; }
-
-  footer { padding: 40px 0 60px; color: var(--ink-soft); font-size: 14px; text-align: center; }
-
-  @media (max-width: 640px) {
-    nav { padding: 14px 20px; } nav .links { gap: 16px; }
-    .wrap { padding: 0 22px; }
-    .hero h1 { font-size: 34px; }
-    .artifact .visual, .artifact .body { padding: 28px 24px; }
-    .vp { padding: 26px 24px; font-size: 18px; }
-  }
+:root{--bg:#0d1117;--panel:#161b22;--panel2:#1c232d;--line:#2a3441;--ink:#e8edf3;--ink-soft:#9aa6b5;--accent:#58a6ff;--accent2:#7ee0c0;--chip:#21303f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Inter",system-ui,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:16px 28px;background:rgba(13,17,23,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .brand{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em}
+nav .links{display:flex;gap:17px}
+nav .links a{color:var(--ink-soft);font-size:14px;font-weight:500;white-space:nowrap}
+nav .links a:hover{color:var(--ink);text-decoration:none}
+.wrap{max-width:900px;margin:0 auto;padding:0 40px}
+header.hero{padding:80px 0 60px;border-bottom:1px solid var(--line)}
+.hero .kicker{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:18px}
+.hero h1{font-family:"Space Grotesk",sans-serif;font-size:46px;line-height:1.08;letter-spacing:-.02em;margin:0 0 10px;font-weight:700}
+.hero .role{font-size:19px;color:var(--ink-soft);margin:0 0 30px;font-weight:500}
+.hero p{font-size:17px;color:var(--ink);max-width:720px;margin:0 0 18px}
+.hero .contact{display:flex;flex-wrap:wrap;gap:10px 12px;margin-top:26px}
+.hero .contact span,.hero .contact a{font-size:13.5px;color:var(--ink-soft);background:var(--chip);border:1px solid var(--line);padding:7px 14px;border-radius:999px}
+.hero .contact a.li{color:var(--accent);border-color:var(--accent);font-weight:500}
+.hero .contact a.li:hover{background:var(--accent);color:#06243f;text-decoration:none}
+.figs{display:grid;gap:14px;margin-top:6px}
+.figs img{width:100%;display:block;border-radius:12px;border:1px solid var(--line)}
+.convo{background:var(--bg);border:1px solid var(--line);border-radius:13px;margin-top:8px}
+.cbar{display:flex;align-items:center;gap:12px;padding:14px 20px;background:var(--panel2);border-bottom:1px solid var(--line);border-radius:12px 12px 0 0}
+.cdot{width:9px;height:9px;border-radius:50%;background:var(--accent2);flex:none}
+.cnm{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14.5px}
+.ctag{margin-left:auto;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);background:var(--chip);border:1px solid var(--line);padding:5px 11px;border-radius:999px;white-space:nowrap}
+.cfeed{padding:20px}
+.crow{display:flex;margin-bottom:13px}
+.crow:last-child{margin-bottom:0}
+.crow.r{justify-content:flex-end}
+.cmsg{max-width:76%;padding:13px 17px 15px;border-radius:13px;font-size:15.5px;line-height:1.58}
+.cmsg.me{background:var(--accent);color:#06243f;font-weight:500;border-bottom-right-radius:4px}
+.cmsg.ai{background:var(--panel2);border:1px solid var(--line);border-bottom-left-radius:4px}
+.cmsg.ai strong{color:var(--accent2)}
+.cmsg p{margin:0;font-size:15.5px}
+.cmsg p+p{margin-top:11px}
+.cwho{display:block;font-family:"Space Grotesk",sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;margin-bottom:6px;opacity:.75}
+.cflag{display:inline-block;font-size:12.5px;color:var(--accent2);background:rgba(126,224,192,.09);border:1px solid rgba(126,224,192,.3);padding:8px 14px;border-radius:999px}
+.centry{display:flex;align-items:center;gap:11px;padding:13px 20px;border-top:1px solid var(--line);background:var(--panel2);border-radius:0 0 12px 12px}
+.cbox{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:10px 14px;font-size:14px;color:var(--ink-soft)}
+.csend{width:34px;height:34px;flex:none;border-radius:9px;background:var(--accent);display:grid;place-items:center;color:#06243f;font-weight:700}
+section{padding:60px 0;border-bottom:1px solid var(--line)}
+.sec-label{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:16px}
+h2.sec-title{font-family:"Space Grotesk",sans-serif;font-size:30px;letter-spacing:-.01em;margin:0 0 22px;font-weight:700}
+.vp{background:linear-gradient(160deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:34px 38px;font-size:20px;line-height:1.6;color:var(--ink)}
+.vp strong{color:var(--accent2);font-weight:600}
+.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.skills span{font-size:13px;color:var(--ink-soft);background:var(--chip);border:1px solid var(--line);padding:6px 13px;border-radius:8px}
+.artifact{background:var(--panel);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.artifact .visual{background:linear-gradient(135deg,#12233b,#0d1a2b);border-bottom:1px solid var(--line);padding:44px 40px;position:relative}
+.artifact .visual .badge{display:inline-block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);font-weight:600;margin-bottom:14px}
+.artifact .visual h3{font-family:"Space Grotesk",sans-serif;font-size:27px;margin:0 0 10px;font-weight:700;letter-spacing:-.01em}
+.artifact .visual p{margin:0;color:var(--ink-soft);font-size:15.5px;max-width:620px}
+.artifact .visual .chatbubble{margin-top:22px;background:#0d1117;border:1px solid var(--line);border-radius:12px;padding:16px 18px;max-width:560px}
+.artifact .visual .chatbubble .u{color:var(--accent);font-size:14px;font-weight:600;margin-bottom:6px}
+.artifact .visual .chatbubble .b{color:var(--ink);font-size:14.5px}
+.artifact .visual .cta{display:inline-block;margin-top:22px;background:var(--accent);color:#06243f;font-weight:600;font-size:14.5px;padding:11px 20px;border-radius:9px}
+.artifact .visual .cta:hover{text-decoration:none;filter:brightness(1.08)}
+.artifact .body{padding:36px 40px 42px}
+.field{margin-bottom:26px}
+.field:last-child{margin-bottom:0}
+.field h4{font-family:"Space Grotesk",sans-serif;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 8px;font-weight:600}
+.field p{margin:0;font-size:16.5px;color:var(--ink)}
+.field ul{margin:6px 0 0;padding-left:20px}
+.field li{font-size:16px;margin-bottom:6px;color:var(--ink)}
+.toolchips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.toolchips span{font-size:13px;color:var(--ink);background:var(--chip);border:1px solid var(--line);padding:6px 12px;border-radius:8px}
+footer{padding:40px 0 60px;color:var(--ink-soft);font-size:14px;text-align:center}
+.glance{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.glance a{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;text-decoration:none}
+.glance a:hover{border-color:var(--accent);text-decoration:none}
+.glance .n{font-family:"Space Grotesk",sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.glance .t{font-family:"Space Grotesk",sans-serif;font-size:17px;font-weight:600;color:var(--ink);margin:6px 0 6px;letter-spacing:-.01em;line-height:1.25}
+.glance .d{font-size:14px;color:var(--ink-soft);line-height:1.5}
+.fallback{margin:12px 0 0;font-size:13.5px;color:var(--ink-soft);max-width:560px}
+.transcript{display:grid;gap:12px;margin-top:8px}
+.turn{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.turn.bot{border-left:3px solid var(--accent2)}
+.turn .who{display:block;font-family:"Space Grotesk",sans-serif;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:5px}
+.turn.bot .who{color:var(--accent2)}
+.turn p{margin:0;font-size:16px;color:var(--ink)}
+@media (max-width:640px){.glance{grid-template-columns:1fr}nav{padding:14px 20px}nav .links{gap:16px}.wrap{padding:0 22px}.hero h1{font-size:34px}.artifact .visual,.artifact .body{padding:28px 24px}.vp{padding:26px 24px;font-size:18px}}
 </style>
 </head>
 <body>
-  <nav>
-    <span class="brand">Sowmya Kukudapu</span>
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#value">Value</a>
-      <a href="#artifacts">Artifacts</a>
-      <a href="#speakers-bureau">Team Project</a>
-      <a href="#ai-timeline">AI Timeline</a>
-    </div>
-  </nav>
-
-  <header class="hero" id="about">
-    <div class="wrap">
-      <p class="kicker">AI / Machine Learning Portfolio</p>
-      <h1>Sowmya Kukudapu</h1>
-      <p class="role">Data &amp; Statistical Programming Professional · Machine Learning Graduate Student</p>
-      <p>I am a certified statistical programmer with nearly ten years of experience turning complex clinical-trial data into accurate, regulation-ready insight across oncology, neurology, vaccines, and cardiovascular studies. I led end-to-end programming of CDISC SDTM and ADaM datasets, tables, listings, and figures through FDA submission, mentored junior programmers, and coordinated work across cross-functional and vendor teams.</p>
-      <p>I am now pursuing a master's degree in Artificial Intelligence and Machine Learning to build on that data foundation. My goal is to grow into a role where I help organizations apply AI responsibly — pairing the technical rigor and quality discipline of a regulated industry with the new capabilities of machine learning. This portfolio documents that journey, starting with my first workshop in the program.</p>
-      <div class="contact">
-        <span>Oncology &amp; Clinical Data</span>
-        <span>CDISC · SDTM · ADaM</span>
-        <span>SAS · R · SQL</span>
-        <span>Learning: AI / ML</span>
-      </div>
-    </div>
-  </header>
-
-  <section id="value">
-    <div class="wrap">
-      <p class="sec-label">Personal Value Proposition</p>
-      <h2 class="sec-title">The value I bring</h2>
-      <div class="vp">
-        As a data professional with nearly a decade in <strong>statistical programming and clinical data standards</strong>, now specializing in <strong>artificial intelligence and machine learning</strong>, I help organizations turn complex, high-stakes data into <strong>trustworthy, decision-ready insight</strong>. I combine the quality and compliance discipline of regulated research with a focus on <strong>responsible, ethical AI</strong> — bridging the gap between raw data and real-world impact.
-      </div>
-      <div class="skills">
-        <span>Statistical Programming</span>
-        <span>CDISC SDTM / ADaM</span>
-        <span>TLFs &amp; Submission Outputs</span>
-        <span>Oncology Endpoints (OS, PFS, KM)</span>
-        <span>SAS (Base/Macro/STAT/SQL)</span>
-        <span>R</span>
-        <span>SQL (Oracle, SQL Server, Teradata)</span>
-        <span>Data Validation &amp; Cleaning</span>
-        <span>Machine Learning (in progress)</span>
-        <span>Responsible AI</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="artifacts">
-    <div class="wrap">
-      <p class="sec-label">Artifact 1.1 · AIML-500 Workshop 1</p>
-      <h2 class="sec-title">Machine Learning Study Assistant</h2>
-
-      <div class="artifact">
-        <div class="visual">
-          <span class="badge">AI Lab · Design-Thinking Build</span>
-          <h3>An AI Assistant That Teaches, Not Answers-For</h3>
-          <p>A conversational study assistant I designed and built to help students learn core machine-learning concepts through plain-language explanations and quizzing — with guardrails that keep it a learning tool, not a shortcut.</p>
-          <div class="chatbubble">
-            <div class="u">Student: "Explain overfitting"</div>
-            <div class="b">Assistant: "Think of a student who memorizes last year's exam answers instead of understanding the material — they ace the old test but fail new questions. An overfit model does the same…"</div>
-          </div>
-          <a class="cta" href="https://chatgpt.com/share/6a48793a-7844-83ea-a028-31944723d506" target="_blank" rel="noopener">View the live assistant →</a>
-        </div>
-
-        <div class="body">
-          <div class="field">
-            <h4>Introduction</h4>
-            <p>This artifact is an AI-powered study assistant I created during the AIML-500 AI Lab using a structured design-thinking process. It represents my first hands-on experience turning a real user need into a working AI product.</p>
-          </div>
-          <div class="field">
-            <h4>Description</h4>
-            <p>The Machine Learning Study Assistant is a conversational assistant that explains introductory machine-learning concepts — supervised, unsupervised, and reinforcement learning, overfitting, neural networks, deep learning, and model evaluation such as accuracy, precision, and recall. It can also quiz a learner one question at a time and give feedback. By design, it declines to complete graded assignments and instead offers to help the student learn, and it asks clarifying questions rather than guessing when given too little information.</p>
-          </div>
-          <div class="field">
-            <h4>Objective</h4>
-            <p>To give students new to machine learning a patient, on-demand study partner that makes dense concepts approachable and builds confidence — while modeling responsible, academic-integrity-friendly use of AI in education.</p>
-          </div>
-          <div class="field">
-            <h4>Process</h4>
-            <ul>
-              <li><strong>Empathy:</strong> identified the real pain point — new learners find ML terminology dense and easily confuse concepts like precision vs. recall.</li>
-              <li><strong>Define:</strong> framed a focused problem statement and deliberately limited scope to explaining and quizzing, not doing graded work.</li>
-              <li><strong>Ideate:</strong> compared a flashcard bot, a concept explainer, and a quiz coach, then combined the explainer and quiz coach for the most learning value.</li>
-              <li><strong>Prototype:</strong> wrote a detailed instruction set answering ten planning questions (objective, knowledge, guardrails, tone, flow, and success criteria).</li>
-              <li><strong>Test &amp; iterate:</strong> ran four scenarios; when an early version began drafting an assignment, I revised the instructions to refuse and redirect — an example of improving the product through testing.</li>
-            </ul>
-          </div>
-          <div class="field">
-            <h4>Tools and Technologies Used</h4>
-            <div class="toolchips">
-              <span>ChatGPT (GPT-4o)</span>
-              <span>Design Thinking</span>
-              <span>Prompt / Instruction Design</span>
-              <span>STORM AI (research practice)</span>
-              <span>Custom GPTs (practice)</span>
-            </div>
-          </div>
-          <div class="field">
-            <h4>Value Proposition</h4>
-            <p>This assistant gives learners a judgment-free way to understand machine-learning concepts at their own pace, turning an intimidating subject into an approachable conversation — while demonstrating how AI can support education without undermining academic integrity.</p>
-          </div>
-          <div class="field">
-            <h4>Unique Value</h4>
-            <p>Unlike a general chatbot, this assistant is built around learning guardrails: it refuses to do graded work, asks for clarification instead of guessing, and always points the learner back to their course material. That intentional restraint reflects the responsible-AI mindset I bring from a regulated, quality-driven background.</p>
-          </div>
-          <div class="field">
-            <h4>Relevance</h4>
-            <p>For my audience — hiring teams and collaborators in data and AI roles — this artifact shows I can take a problem from empathy to a working, responsibly-designed AI solution, and explain my reasoning clearly to both technical and non-technical people.</p>
-          </div>
-          <div class="field">
-            <h4>References</h4>
-            <p>Built during AIML-500 (Machine Learning Fundamentals), Workshop 1 AI Lab, Indiana Wesleyan University. Design-thinking framework per the AI Lab guided activity.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="speakers-bureau">
-    <div class="wrap">
-      <p class="sec-label">Artifact 1.2 · Team Project</p>
-      <h2 class="sec-title">The Rebound Room — AI Speakers Bureau</h2>
-
-      <div class="artifact">
-        <div class="visual">
-          <span class="badge">Team Project · AI Booking Bot</span>
-          <h3>An AI Booking Assistant for a Speakers Bureau</h3>
-          <p>The Rebound Room is a student-run speakers bureau I helped build as part of a team project — eight speakers, each with a personal story of resilience and reinvention, made bookable through a custom AI booking assistant. I contributed to compiling speaker profiles and building the booking bot's knowledge base and instructions, alongside the group's process and marketing infographics shown below.</p>
-          <a class="cta" href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2210TA5_K5TO8DiC6EAZaPXH-PiJHpY09yl%22%5D,%22action%22:%22open%22,%22userId%22:%22110275319469463327484%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" target="_blank" rel="noopener">Try the AI Booking Bot →</a>
-        </div>
-
-        <div class="body">
-          <div class="field">
-            <h4>Introduction</h4>
-            <p>Built with a team as an applied exercise in AI-assisted booking systems, this project pairs authentic speaker storytelling with a purpose-built AI assistant that matches event organizers to the right speaker by topic, budget, and language.</p>
-          </div>
-          <div class="field">
-            <h4>Process Infographic</h4>
-            <img src="rebound-process.png" alt="The Rebound Room project workflow infographic" style="width:100%; border-radius:12px; border:1px solid var(--line); margin-top:6px;" />
-          </div>
-          <div class="field">
-            <h4>Marketing Infographic</h4>
-            <img src="rebound-marketing.png" alt="The Rebound Room marketing infographic" style="width:100%; border-radius:12px; border:1px solid var(--line); margin-top:6px;" />
-          </div>
-          <div class="field">
-            <h4>Relevance</h4>
-            <p>Shows my ability to contribute to a team-built AI product end to end — from structuring source content to writing the system instructions that keep an AI assistant grounded, accurate, and on-brand.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="ai-timeline">
-    <div class="wrap">
-      <p class="sec-label">Artifact 1.3 · Discussion 1.3</p>
-      <h2 class="sec-title">The Evolution of Artificial Intelligence</h2>
-
-      <div class="artifact">
-        <div class="visual">
-          <span class="badge">Research · Visual Timeline</span>
-          <h3>Seven Decades of AI, Mapped</h3>
-          <p>Seven decades from a single provocative question — "Can machines think?" — to generative models that write, see, and reason. This nine-slide deck traces the milestones from the Dartmouth Workshop and Rosenblatt's Perceptron through two AI winters, AlexNet, Transformers, and ChatGPT — showing how hardware breakthroughs proved as decisive as the algorithms themselves.</p>
-          <a class="cta" href="AI-Timeline.pptx" download>Download slide deck (.pptx) →</a>
-        </div>
-        <div class="body">
-          <div class="field">
-            <h4>Description</h4>
-            <p>Structured as four eras — Foundations (1950–1979), the Expert-System Era (1980–1999), the Deep-Learning Boom (2000–2016), and the Generative Age (2017–now) — with two "AI winter" funding freezes marked along the way. Key milestones include the 1956 Dartmouth Workshop that named the field, Deep Blue's 1997 chess win, AlexNet's 2012 breakthrough, the 2017 Transformer paper, and ChatGPT's record-setting 2022 launch.</p>
-          </div>
-          <div class="field">
-            <h4>Relevance</h4>
-            <p>Demonstrates my ability to research, synthesize, and visually communicate the historical context behind the field I'm now building my career in — useful context for any audience evaluating my AI/ML fluency.</p>
-          </div>
-          <div class="field">
-            <h4>References</h4>
-            <p>Built for AIML-500 (Machine Learning Fundamentals), Workshop 1, Discussion 1.3, Indiana Wesleyan University.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
+<nav>
+<span class="brand">Sowmya Kukudapu</span>
+<div class="links">
+<a href="#about">About</a>
+<a href="#value">Value</a>
+<a href="#glance">Artifacts</a>
+<a href="#artifacts">01</a>
+<a href="#artifact2">02</a>
+<a href="#artifact3">03</a>
+<a href="#artifact4">04</a>
+<a href="#artifact5">05</a>
+<a href="#speakers-bureau">Team</a>
+<a href="#ai-timeline">Individual</a>
+</div>
+</nav>
+<header class="hero" id="about">
+<div class="wrap">
+<p class="kicker">AI / Machine Learning Portfolio</p>
+<h1>Sowmya Kukudapu</h1>
+<p class="role">Data &amp; Statistical Programming Professional · Machine Learning Graduate Student</p>
+<p>I am a certified statistical programmer who turns complex clinical-trial data into accurate, regulation-ready insight across oncology, neurology, vaccines, and cardiovascular studies. I led end-to-end programming of CDISC SDTM and ADaM datasets, tables, listings, and figures through FDA submission, mentored junior programmers, and coordinated work across cross-functional and vendor teams.</p>
+<p>I am now pursuing a master's degree in Artificial Intelligence and Machine Learning to build on that data foundation. My goal is to grow into a role where I help organizations apply AI responsibly — pairing the technical rigor and quality discipline of a regulated industry with the new capabilities of machine learning. This portfolio documents that journey, starting with my first workshop in the program.</p>
+<div class="contact">
+<span>Oncology &amp; Clinical Data</span>
+<span>CDISC · SDTM · ADaM</span>
+<span>SAS · R · SQL</span>
+<span>Learning: AI / ML</span>
+<a href="https://www.linkedin.com/in/sowmya-kukudapu-962235208/" target="_blank" rel="noopener" class="li">LinkedIn →</a>
+</div>
+</div>
+</header>
+<section id="value">
+<div class="wrap">
+<p class="sec-label">Personal Value Proposition</p>
+<h2 class="sec-title">The value I bring</h2>
+<div class="vp">As a data professional grounded in <strong>statistical programming and clinical data standards</strong>, now specializing in <strong>artificial intelligence and machine learning</strong>, I help organizations turn complex, high-stakes data into <strong>trustworthy, decision-ready insight</strong>. I combine the quality and compliance discipline of regulated research with a focus on <strong>responsible, ethical AI</strong> — bridging the gap between raw data and real-world impact. Concretely: I have led end-to-end SDTM and ADaM programming for oncology and vaccine studies through <strong>FDA submission</strong>, where a single undocumented derivation can delay a filing — the standard of care I now bring to machine learning work.</div>
+<div class="skills">
+<span>Statistical Programming</span>
+<span>CDISC SDTM / ADaM</span>
+<span>TLFs &amp; Submission Outputs</span>
+<span>Oncology Endpoints (OS, PFS, KM)</span>
+<span>SAS (Base/Macro/STAT/SQL)</span>
+<span>R</span>
+<span>SQL (Oracle, SQL Server, Teradata)</span>
+<span>Data Validation &amp; Cleaning</span>
+<span>Machine Learning (in progress)</span>
+<span>Responsible AI</span>
+</div>
+</div>
+</section>
+<section id="glance">
+<div class="wrap">
+<p class="sec-label">Contents</p>
+<h2 class="sec-title">Five artifacts, two projects</h2>
+<div class="glance">
+<a href="#artifacts"><span class="n">Artifact 01</span><div class="t">Machine Learning Study Assistant</div><div class="d">A working AI study partner built through design thinking — with guardrails that refuse to do graded work.</div></a>
+<a href="#artifact2"><span class="n">Artifact 02</span><div class="t">ML vs. Deep Learning: Comparative Analysis</div><div class="d">Two real cases judged on data structure, size, interpretability, and cost — including why the alternative method fails.</div></a>
+<a href="#artifact3"><span class="n">Artifact 03</span><div class="t">Ethical Risk Assessment: Synthetic Data</div><div class="d">A reusable intent / consent / verifiability framework for deciding when generative data use is defensible.</div></a>
+<a href="#artifact4"><span class="n">Artifact 04</span><div class="t">Data Challenges in Production ML</div><div class="d">Missing data, 0.8% class imbalance, and layered drift — diagnosed by mechanism, priced by business cost.</div></a>
+<a href="#artifact5"><span class="n">Artifact 05</span><div class="t">Commercial AI Briefing for Decision Makers</div><div class="d">Pharma, healthcare, and finance AI translated for executives — capability, dollar impact, and residual risk.</div></a>
+<a href="#speakers-bureau"><span class="n">Team Project</span><div class="t">The Rebound Room — AI Speakers Bureau</div><div class="d">Built with a team: eight speakers made bookable through a custom AI booking assistant I helped design and ground.</div></a>
+<a href="#ai-timeline"><span class="n">Individual Project</span><div class="t">The Evolution of Artificial Intelligence</div><div class="d">Solo research and design: seven decades of AI mapped across four eras in a nine-slide deck.</div></a>
+</div>
+</div>
+</section>
+<section id="artifacts">
+<div class="wrap">
+<p class="sec-label">Artifact 01 · AIML-500 Workshop 1</p>
+<h2 class="sec-title">Machine Learning Study Assistant</h2>
+<div class="artifact">
+<div class="visual">
+<span class="badge">AI Lab · Design-Thinking Build</span>
+<h3>An AI Assistant That Teaches, Not Answers-For</h3>
+<p>A conversational study assistant I designed and built to help students learn core machine-learning concepts through plain-language explanations and quizzing — with guardrails that keep it a learning tool, not a shortcut.</p>
+<div class="chatbubble">
+<div class="u">Student: "Explain overfitting"</div>
+<div class="b">Assistant: "Think of a student who memorizes last year's exam answers instead of understanding the material — they ace the old test but fail new questions. An overfit model does the same…"</div>
+</div>
+<a class="cta" href="https://chatgpt.com/share/6a48793a-7844-83ea-a028-31944723d506" target="_blank" rel="noopener">View the live assistant →</a>
+<p class="fallback">Hosted on a ChatGPT share link, which may require sign-in. A full transcript excerpt is included below so the artifact stands on its own.</p>
+</div>
+<div class="body">
+<div class="field"><h4>Introduction</h4><p>This artifact is an AI-powered study assistant I created during the AIML-500 AI Lab using a structured design-thinking process. It represents my first hands-on experience turning a real user need into a working AI product.</p></div>
+<div class="field"><h4>Description</h4><p>The Machine Learning Study Assistant is a conversational assistant that explains introductory machine-learning concepts — supervised, unsupervised, and reinforcement learning, overfitting, neural networks, deep learning, and model evaluation such as accuracy, precision, and recall. It can also quiz a learner one question at a time and give feedback. By design, it declines to complete graded assignments and instead offers to help the student learn, and it asks clarifying questions rather than guessing when given too little information.</p></div>
+<div class="field"><h4>Objective</h4><p>To give students new to machine learning a patient, on-demand study partner that makes dense concepts approachable and builds confidence — while modeling responsible, academic-integrity-friendly use of AI in education.</p></div>
+<div class="field"><h4>Process</h4><ul>
+<li><strong>Empathy:</strong> identified the real pain point — new learners find ML terminology dense and easily confuse concepts like precision vs. recall.</li>
+<li><strong>Define:</strong> framed a focused problem statement and deliberately limited scope to explaining and quizzing, not doing graded work.</li>
+<li><strong>Ideate:</strong> compared a flashcard bot, a concept explainer, and a quiz coach, then combined the explainer and quiz coach for the most learning value.</li>
+<li><strong>Prototype:</strong> wrote a detailed instruction set answering ten planning questions (objective, knowledge, guardrails, tone, flow, and success criteria).</li>
+<li><strong>Test &amp; iterate:</strong> ran four scenarios; when an early version began drafting an assignment, I revised the instructions to refuse and redirect — an example of improving the product through testing.</li>
+</ul></div>
+<div class="field"><h4>Tools and Technologies Used</h4><div class="toolchips"><span>ChatGPT (GPT-4o)</span><span>Design Thinking</span><span>Prompt / Instruction Design</span><span>STORM AI (research practice)</span><span>Custom GPTs (practice)</span></div></div>
+<div class="field"><h4>Value Proposition</h4><p>This assistant gives learners a judgment-free way to understand machine-learning concepts at their own pace, turning an intimidating subject into an approachable conversation — while demonstrating how AI can support education without undermining academic integrity.</p></div>
+<div class="field"><h4>Unique Value</h4><p>Unlike a general chatbot, this assistant is built around learning guardrails: it refuses to do graded work, asks for clarification instead of guessing, and always points the learner back to their course material. That intentional restraint reflects the responsible-AI mindset I bring from a regulated, quality-driven background.</p></div>
+<div class="field"><h4>Relevance</h4><p>For my audience — hiring teams and collaborators in data and AI roles — this artifact shows I can take a problem from empathy to a working, responsibly-designed AI solution, and explain my reasoning clearly to both technical and non-technical people.</p></div>
+<div class="field"><h4>The Assistant in Use</h4>
+<div class="convo">
+<div class="cbar"><span class="cdot"></span><span class="cnm">Machine Learning Study Assistant</span><span class="ctag">Concept explainer</span></div>
+<div class="cfeed">
+<div class="crow r"><div class="cmsg me"><span class="cwho">Student</span><p>Precision vs. recall — what's the difference?</p></div></div>
+<div class="crow"><div class="cmsg ai"><span class="cwho">Assistant</span><p>Picture a metal detector on a beach. <strong>Precision</strong> asks: of everything it beeped at, how much was actually metal? <strong>Recall</strong> asks: of all the metal buried out there, how much did it find?</p><p>A detector that beeps constantly has high recall and terrible precision. One that beeps only when completely certain has the reverse.</p><p>Which matters more depends on what each mistake costs you. Want to work a case together?</p></div></div>
+<div class="crow r"><div class="cmsg me"><span class="cwho">Student</span><p>Yes — fraud detection.</p></div></div>
+</div>
+<div class="centry"><div class="cbox">Ask about a concept, or say "quiz me"…</div><div class="csend">↑</div></div>
+</div>
+<p class="fallback">Explaining precision vs. recall by analogy, then offering to work a case.</p>
+<div class="convo" style="margin-top:22px">
+<div class="cbar"><span class="cdot"></span><span class="cnm">Machine Learning Study Assistant</span><span class="ctag">Academic-integrity guardrail</span></div>
+<div class="cfeed">
+<div class="crow r"><div class="cmsg me"><span class="cwho">Student</span><p>Write my assignment on overfitting for me.</p></div></div>
+<div class="crow"><div class="cmsg ai"><span class="cwho">Assistant</span><p>I'm not able to write graded work for you — but I can absolutely get you ready to write it yourself.</p><p>Tell me in your own words what you think overfitting means, and I'll tell you what's solid and what needs sharpening. Want to start there?</p></div></div>
+<div class="crow"><span class="cflag">Guardrail triggered · refused, then redirected</span></div>
+<div class="crow r"><div class="cmsg me"><span class="cwho">Student</span><p>It's when the model memorizes the training data?</p></div></div>
+<div class="crow"><div class="cmsg ai"><span class="cwho">Assistant</span><p>Right instinct, and most of the way there. Add one piece: <strong>what it costs you</strong> — the model looks excellent on data it has already seen and fails on data it hasn't. Say that second part and you have a full definition.</p></div></div>
+</div>
+<div class="centry"><div class="cbox">Ask about a concept, or say "quiz me"…</div><div class="csend">↑</div></div>
+</div>
+<p class="fallback">The guardrail in action: refuses graded work, redirects to learning.</p></div>
+<div class="field"><h4>Two Other Designed Behaviors</h4><div class="transcript">
+<div class="turn"><span class="who">Student</span><p>Quiz me on model evaluation.</p></div>
+<div class="turn bot"><span class="who">Assistant</span><p>One question at a time. A model classifies 990 of 1,000 emails correctly, but every single spam email slipped through. Its accuracy is 99%. Why is that number misleading here?</p></div>
+<div class="turn"><span class="who">Student</span><p>My model isn't working, what should I do?</p></div>
+<div class="turn bot"><span class="who">Assistant</span><p>I could guess, but I'd probably guess wrong. Two questions first: what does "not working" look like — poor accuracy on training data, or good training results that fall apart on test data? And is this a classification or regression problem?</p></div>
+</div><p class="fallback">The quiz flow and the refusal to guess when a request is underspecified were both deliberate design decisions, tested and revised during the AI Lab.</p></div>
+<div class="field"><h4>References</h4><p>Built during AIML-500 (Machine Learning Fundamentals), Workshop 1 AI Lab, Indiana Wesleyan University. Design-thinking framework per the AI Lab guided activity.</p></div>
+<div class="field"><h4>Reflection</h4><p><strong>Customization for the Audience:</strong> The AI Lab submission was documentation of a process — evidence for an instructor that I had worked through each design-thinking stage in order. For the portfolio, aimed at recruiters and hiring managers, I cut the stage-by-stage narration down to what each stage actually decided, and led instead with the product itself and the guardrail that defines it: an assistant that refuses to complete graded work. A hiring manager does not need proof that I followed a framework; they need evidence that I made defensible product decisions and can say why.</p><p><strong>Lessons Learned:</strong> The most valuable part of this build was not the prompt design but the failure. An early version began drafting an assignment when a test user asked it to, which told me that stating an intention in instructions is not the same as enforcing it. Rewriting the instructions to refuse and redirect taught me that responsible AI is a testing discipline, not a statement of values — you find out what your system actually does by trying to make it misbehave. That lesson carried directly into every artifact that followed.</p><p><strong>Feedback and Revisions:</strong> Testing feedback drove the two changes that matter most in the final version: the refusal-and-redirect behavior described above, and the decision to ask a clarifying question instead of guessing when a learner's request is too vague. For the portfolio revision, later peer feedback about expiring share links prompted me to reproduce the key exchanges directly on this page, so the guardrail is visible even if the live link requires a sign-in.</p></div>
+</div>
+</div>
+</div>
+</section>
 <section id="artifact2">
 <div class="wrap">
 <p class="sec-label">Artifact 02 · AIML-500 Workshop 2</p>
@@ -307,7 +260,6 @@
 </div>
 </div>
 </section>
-
 <section id="artifact3">
 <div class="wrap">
 <p class="sec-label">Artifact 03 · AIML-500 Workshop 3</p>
@@ -336,13 +288,12 @@
 <div class="field"><h4>Value Proposition</h4><p>Generative model capability is advancing faster than most organizations' governance for it. This artifact demonstrates that I can proactively build an evaluative framework rather than waiting for a compliance team to react after a problem occurs — a distinction that matters especially in clinical/pharma settings where data misuse carries regulatory and human consequences.</p></div>
 <div class="field"><h4>Unique Value</h4><p>Many technical candidates can explain how a GAN works; fewer bring a reusable, applicable ethical framework to the conversation. Pairing technical fluency with a structured ethics lens is the differentiator this artifact is built to surface.</p></div>
 <div class="field"><h4>Relevance</h4><p>As generative AI becomes standard tooling in clinical research (synthetic control arms, data augmentation) and general industry, the ability to distinguish beneficial synthetic-data use from harmful misuse — and to say why, specifically — is directly relevant to any AI/ML role touching real people's data.</p></div>
-<div class="field"><h4>References</h4><p>Course lesson materials, Workshop 3, Machine Learning Fundamentals (AIML program, IWU).</p></div>
+<div class="field"><h4>References</h4><p>AIML-500 (Machine Learning Fundamentals), Workshop 3, Indiana Wesleyan University.</p></div>
 <div class="field"><h4>Reflection</h4><p><strong>Customization for the Audience:</strong> The classroom version of this piece needed to demonstrate that I understood the course's ethical-implications learning objective directly, so it referenced GANs and deepfakes explicitly in course terms. For the portfolio, aimed at hiring managers, I reframed it around a reusable framework (intent, consent, verifiability) rather than a course-topic summary, because a hiring manager cares less about whether I covered the assigned material and more about whether I can produce something they could actually apply to a real governance decision.</p><p><strong>Lessons Learned:</strong> This artifact taught me that ethical reasoning reads as more credible when it's structured as a decision framework rather than a general discussion of pros and cons. A framework signals that I can operationalize an ethical concern into something a team could actually use, not just recognize that a risk exists. I also learned that pairing a legitimate use case directly against its harmful counterpart, rather than describing them separately, makes the stakes of the technology much more concrete.</p><p><strong>Feedback and Revisions:</strong> Early feedback noted that my first draft spent too much time defining GANs technically and not enough on the actual ethical evaluation, which is the point of the artifact. I cut the technical background down to a single sentence of context and expanded the framework and its application instead, which shifted the piece from "explains GANs" to "evaluates GAN use" — a much stronger portfolio signal.</p></div>
 </div>
 </div>
 </div>
 </section>
-
 <section id="artifact4">
 <div class="wrap">
 <p class="sec-label">Artifact 04 · AIML-500 Workshop 4</p>
@@ -377,9 +328,90 @@
 </div>
 </div>
 </section>
-  
-  <footer>
-    <div class="wrap">© 2026 Sowmya Kukudapu · AI/ML Professional Portfolio · Built for AIML-500</div>
-  </footer>
+<section id="artifact5">
+<div class="wrap">
+<p class="sec-label">Artifact 05 · AIML-500 Workshop 6</p>
+<h2 class="sec-title">Commercial AI Briefing: Translating Capability into Business Impact</h2>
+<div class="artifact">
+<div class="visual">
+<span class="badge">Executive Communication · Industry Analysis</span>
+<h3>The Skill That Gets the Work Funded</h3>
+<p>My first four artifacts show building, comparative reasoning, ethical evaluation, and production diagnosis. This fifth artifact shows the skill that determines whether any of that work is ever approved: briefing a non-technical decision maker on what an AI system does, what it changes, and where it still needs human oversight.</p>
+<div class="chatbubble">
+<div class="u">Financial services entry · fraud detection</div>
+<div class="b">Impact is measured directly in prevented loss. Residual risk: explainability here is a regulatory obligation, not a preference — a more accurate model you cannot explain to an examiner is not a usable model.</div>
+</div>
+</div>
+<div class="body">
+<div class="field"><h4>Introduction</h4><p>Adapted from my Workshop 6 newsletter on commercial applications of AI, this artifact is a short executive briefing covering three industries where AI has moved from pilot to production — pharmaceuticals, healthcare delivery, and financial services — written for an audience that does not read model documentation.</p></div>
+<div class="field"><h4>Description</h4><p>Each industry is presented in a fixed four-part structure — problem, approach, business impact, residual risk — so the reader can compare across industries rather than absorb three unrelated stories. A plain-language glossary lets the briefing stand on its own for a reader with no ML background.</p></div>
+<div class="field"><h4>Objective</h4><p>To show that I can brief an executive, clinical, or compliance audience accurately and without jargon: stating what a system does, what it changes about cost, cycle time, or risk, and where it still requires human oversight.</p></div>
+<div class="field"><h4>Process</h4><ul>
+<li><strong>Selected on evidence, not hype:</strong> chose three industries where the commercial case is documented in shipped products rather than speculative, then researched the specific companies deploying them.</li>
+<li><strong>Fixed the structure first:</strong> wrote every entry as problem → approach → business impact → residual risk, which forced comparability and exposed where my own understanding of the business case was thin.</li>
+<li><strong>Named the limits:</strong> paired each benefit with a residual risk — model-driven clinical alerts requiring validated monitoring, fraud models requiring examiner-ready explainability.</li>
+<li><strong>Wrote the glossary last:</strong> worked backward from the terms I had actually used, rather than defining terms I assumed a reader wouldn't know.</li>
+</ul></div>
+<div class="field"><h4>The Three Entries</h4><ul>
+<li><strong>Pharmaceuticals:</strong> ML applied to molecular screening and trial design — impact is compressed discovery timelines and fewer failed candidates advancing into expensive late-stage trials.</li>
+<li><strong>Healthcare delivery:</strong> predictive and documentation models in clinical workflow — impact is clinician time recovered and earlier intervention, conditional on validated monitoring rather than blind trust.</li>
+<li><strong>Financial services:</strong> fraud detection and risk modeling — impact is loss prevention measured in dollars, constrained by explainability as a regulatory requirement.</li>
+</ul></div>
+<div class="field"><h4>Tools and Technologies Used</h4><div class="toolchips"><span>Applied Machine Learning</span><span>Predictive Modeling</span><span>Fraud Detection</span><span>Drug Discovery</span><span>Model Explainability</span><span>Technical Communication</span></div></div>
+<div class="field"><h4>Value Proposition</h4><p>Most AI initiatives fail at the funding and adoption stage, not the modeling stage, because the people who approve them cannot evaluate what they are approving. This artifact demonstrates that I can close that gap — presenting capability honestly, including its limits, so a decision maker can act on it.</p></div>
+<div class="field"><h4>Unique Value</h4><p>The differentiator is refusing to oversell. Naming a residual risk alongside every benefit is what earns durable credibility with clinical and compliance stakeholders — the audiences most likely to block an AI deployment when they suspect they are being managed rather than informed.</p></div>
+<div class="field"><h4>Relevance</h4><p>Any AI/ML role in a regulated industry requires this translation constantly — to executive sponsors, clinicians, auditors, and risk committees. The technical work is necessary but not sufficient; making it legible is what moves it into production.</p></div>
+<div class="field"><h4>References</h4><p>AIML-500 (Machine Learning Fundamentals), Workshop 6, Assignment 6.3 (Commercial Applications of AI Newsletter), Indiana Wesleyan University.</p></div>
+<div class="field"><h4>Reflection</h4><p><strong>Customization for the Audience:</strong> The classroom newsletter was written to demonstrate breadth — that I could identify commercial AI applications across multiple industries and explain them accurately. For the portfolio, aimed at hiring managers, I reframed it as an executive briefing and made the fixed comparison structure and the residual-risk line the visible point of the piece. A hiring manager evaluating me for a pharma or healthcare role cares less about whether I can list three industries and more about whether I can stand in front of their steering committee and be trusted. I also promoted the glossary from an appendix afterthought to a stated design decision, because building for the reader's comprehension is itself the competency on display.</p><p><strong>Lessons Learned:</strong> Writing for a non-technical audience is harder than writing for a technical one, because a term cannot substitute for an explanation. Forcing every industry into the same four-part structure exposed where my understanding was thin — I could describe the approach but initially struggled to state the business impact in numbers, which told me I had learned the technology without learning the case for it. Naming residual risk also strengthened rather than weakened the argument, the opposite of my instinct going in.</p><p><strong>Feedback and Revisions:</strong> Peer feedback across the course consistently pushed me toward specificity. A classmate's reply in the Workshop 6 discussion raised the tension between transparency and security exposure, which is why the financial services entry now treats explainability as a regulatory obligation with tradeoffs rather than an unqualified good. Earlier feedback on my Workshop 3 artifact taught me to cut technical background in favor of the actual analysis, and I applied that from the first draft here — the briefing spends no space defining machine learning in general. The fixed comparative structure came out of rereading my own draft and finding it read as three separate articles rather than one briefing.</p></div>
+</div>
+</div>
+</div>
+</section>
+<section id="speakers-bureau">
+<div class="wrap">
+<p class="sec-label">Team Project · AIML-500</p>
+<h2 class="sec-title">The Rebound Room — AI Speakers Bureau</h2>
+<div class="artifact">
+<div class="visual">
+<span class="badge">Team Project · AI Booking Bot</span>
+<h3>An AI Booking Assistant for a Speakers Bureau</h3>
+<p>The Rebound Room is a student-run speakers bureau I helped build as part of a team project — eight speakers, each with a personal story of resilience and reinvention, made bookable through a custom AI booking assistant. I contributed to compiling speaker profiles and building the booking bot's knowledge base and instructions, alongside the group's process and marketing infographics shown below.</p>
+<a class="cta" href="https://aistudio.google.com/app/prompts?state=%7B%22ids%22:%5B%2210TA5_K5TO8DiC6EAZaPXH-PiJHpY09yl%22%5D,%22action%22:%22open%22,%22userId%22:%22110275319469463327484%22,%22resourceKeys%22:%7B%7D%7D&usp=sharing" target="_blank" rel="noopener">Try the AI Booking Bot →</a>
+<p class="fallback">Hosted on a Google AI Studio share link, which may require sign-in. The infographics below and this sample exchange document the build independently.</p>
+<div class="chatbubble" style="margin-top:18px">
+<div class="u">Organizer: "I need a Spanish-speaking speaker on resilience, budget under $2,000."</div>
+<div class="b">Booking Assistant: "Two of our eight speakers fit. Both present on resilience in Spanish and English, and both fall inside your budget. Would you like their topic summaries, or should I check availability for your event date first?"</div>
+</div>
+</div>
+<div class="body">
+<div class="field"><h4>Introduction</h4><p>Built with a team as an applied exercise in AI-assisted booking systems, this project pairs authentic speaker storytelling with a purpose-built AI assistant that matches event organizers to the right speaker by topic, budget, and language.</p></div>
+<div class="field"><h4>Infographics</h4><div class="figs"><img src="rebound-process.png" alt="The Rebound Room project workflow infographic"><img src="rebound-marketing.png" alt="The Rebound Room marketing infographic"></div><p class="fallback">Process and marketing infographics from the team build.</p></div>
+<div class="field"><h4>Relevance</h4><p>Shows my ability to contribute to a team-built AI product end to end — from structuring source content to writing the system instructions that keep an AI assistant grounded, accurate, and on-brand.</p></div>
+<div class="field"><h4>References</h4><p>AIML-500 (Machine Learning Fundamentals), Workshop 1 team project, Indiana Wesleyan University.</p></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ai-timeline">
+<div class="wrap">
+<p class="sec-label">Individual Project · AIML-500</p>
+<h2 class="sec-title">The Evolution of Artificial Intelligence</h2>
+<div class="artifact">
+<div class="visual">
+<span class="badge">Research · Visual Timeline</span>
+<h3>Seven Decades of AI, Mapped</h3>
+<p>Seven decades from a single provocative question — "Can machines think?" — to generative models that write, see, and reason. This nine-slide deck traces the milestones from the Dartmouth Workshop and Rosenblatt's Perceptron through two AI winters, AlexNet, Transformers, and ChatGPT — showing how hardware breakthroughs proved as decisive as the algorithms themselves.</p>
+<p class="fallback">Nine slides, four eras, two AI winters — summarized below.</p>
+</div>
+<div class="body">
+<div class="field"><h4>Introduction</h4><p>An individually researched and designed nine-slide deck tracing the history of artificial intelligence, built to establish the historical context behind the field I am now working in.</p></div>
+<div class="field"><h4>Description</h4><p>Structured as four eras — Foundations (1950–1979), the Expert-System Era (1980–1999), the Deep-Learning Boom (2000–2016), and the Generative Age (2017–now) — with two "AI winter" funding freezes marked along the way. Key milestones include the 1956 Dartmouth Workshop that named the field, Deep Blue's 1997 chess win, AlexNet's 2012 breakthrough, the 2017 Transformer paper, and ChatGPT's record-setting 2022 launch.</p></div>
+<div class="field"><h4>Relevance</h4><p>Demonstrates my ability to research, synthesize, and visually communicate the historical context behind the field I'm now building my career in — useful context for any audience evaluating my AI/ML fluency.</p></div>
+<div class="field"><h4>References</h4><p>Built for AIML-500 (Machine Learning Fundamentals), Workshop 1, Discussion 1.3, Indiana Wesleyan University.</p></div>
+</div>
+</div>
+</div>
+</section>
+<footer><div class="wrap"><p style="margin:0 0 10px"><a href="https://www.linkedin.com/in/sowmya-kukudapu-962235208/" target="_blank" rel="noopener">linkedin.com/in/sowmya-kukudapu</a></p>© 2026 Sowmya Kukudapu · AI/ML Professional Portfolio · Built for AIML-500</div></footer>
 </body>
 </html>
